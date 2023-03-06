@@ -19,9 +19,9 @@ clean:
 %.pcm : %.cppm
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) --precompile $^ -o $@
 
-# Precompiled modules (.pcm) generate a .o
+# Precompiled modules (.pcm) generate a .o. Note lack of CPPFLAGS.
 %.o : %.pcm
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $^ -o $@
+	$(CXX) $(CXXFLAGS) -c $^ -o $@
 
 # Same as the above two rules, but done in one call to the compiler. This won't have
 # as much parallelism as the above.
